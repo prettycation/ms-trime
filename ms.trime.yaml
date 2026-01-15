@@ -3,11 +3,11 @@
 
 config_version: "3.0"
 name: 魔裁 #方案名称
-author: lost-42 #作者信息
+author: lost-42&prettycation #作者信息
 
 #界面风格、功能开关
 style:
-  auto_caps: false #自動句首大寫:true|false|ascii
+  auto_caps: false #自动句首大写:true|false|ascii
   background_dim_amount: 0.5
   root_background: keyboard_back_color # 整个键盘区+候选栏的背景图/色
   candidate_font: han.ttf #候选字体
@@ -36,7 +36,7 @@ style:
     max_height: 300 #最大高度
     min_width: 0 #最小宽度
     min_height: 50 #最小高度
-    margin_x: 5 #水平邊距 NOTE: margin_{x, y, bottom} 实际为 padding
+    margin_x: 5 #水平边距 NOTE: margin_{x, y, bottom} 实际为 padding
     margin_y: 5 #竖直边距
     line_spacing: 0 #候选词的行间距(px)
     line_spacing_multiplier: 1.2 #候选词的行间距(倍数)
@@ -90,11 +90,11 @@ style:
   enter_label_mode: 0 #是否使用App提供的ActionLabel内容作为Enter键的文本（由于多数App没有适配ActionLable，实际影响不大）。0不使用，1只使用actionlabel，2优先使用，3当其他方式没有获得label时才读取actionlabel
   enter_labels: # 定义Enter键的文本
     go: 赞同
-    done: 完成
+    done: 投票
     next: 下个
     pre: 上个
     search: 疑问
-    send: 发送
+    send: 论破
     default: 裁判 # 定义默认Enter键的文本
 
 fallback_colors:
@@ -103,6 +103,20 @@ fallback_colors:
 #配色方案
 preset_color_schemes:
   default:
+    name: "奈叶香/ナノカ" #方案名称
+    back_color: 0x383B4A #背景
+    text_color: 0xFEF2F6 #文字
+    key_back_color: 0x020203 #按键背景
+    hilited_candidate_back_color: 0x1A1D25 #候选高亮背景
+    bc1: 0x2A2D35 # shift
+    tc1: 0xFEF2F6
+    bc2: 0x2A2D35 # BackSpace
+    tc2: 0xFEF2F6
+    bc3: 0x2A2D35 # space
+    tc3: 0xFEF2F6
+    bc4: 0x2A2D35 # enter
+    tc4: 0xFEF2F6
+  aima:
     name: "艾玛/エマ" #方案名称
     back_color: 0xF2B8CC #背景
     text_color: 0x000000 #文字
@@ -200,20 +214,6 @@ preset_color_schemes:
     tc3: 0xE5E9EF
     bc4: 0x9D81B8
     tc4: 0xE5E9EF
-  nanoka:
-    name: "奈叶香/ナノカ"
-    back_color: 0x383B4A #背景
-    text_color: 0xFEF2F6 #文字
-    key_back_color: 0x2A2D35 #按键背景
-    hilited_candidate_back_color: 0x0B0D11 #候选高亮背景
-    bc1: 0x2A2D35
-    tc1: 0xFEF2F6
-    bc2: 0x2A2D35
-    tc2: 0xFEF2F6
-    bc3: 0x2A2D35
-    tc3: 0xFEF2F6
-    bc4: 0x2A2D35
-    tc4: 0xFEF2F6
   arisa:
     name: "亚里沙/アリサ"
     back_color: 0x9C9CA7 #背景
@@ -297,11 +297,13 @@ liquid_keyboard:
   vertical_gap: 8 #纵向按键间隙
   margin_x: 4 #左右按键间隙的1/2
   fixed_key_bar: # 固定按键条
-    position: bottom # 摆放位置（在滚动区域的……） top|bottom|left|right
+    position: right # 摆放位置（在滚动区域的……） top|bottom|left|right
     keys: # 按键（显示名称为对应的label，不能放太多）
-      - liquid_keyboard_exit
-      - space
       - BackSpace
+      - space1
+      - Return1
+      - liquid_keyboard_exit
+
   keyboards: [
       history,
       ascii,
@@ -309,10 +311,16 @@ liquid_keyboard:
       emoji,
       yanwenzi,
       clipboard,
+      emoji_full,
       math,
+      list,
       unit,
       pinyin,
       grease,
+      rusa,
+      korea,
+      lation,
+      yinbiao,
       exit,
     ] #tab列表
   exit:
@@ -369,10 +377,18 @@ liquid_keyboard:
     name: 单位
     type: SINGLE
     keys: "℃¥$€฿￡㎡m³℉￥£￠₠¹²³⁴⁵ⁿ⁶⁷⁸⁹⁰ˣ⁺⁻⁼⁽⁾½⅓¼⅔¾₁₂₃₄₅ₙ₆₇₈₉₀ₓ₊₋₌₍₎℅"
+  list:
+    name: 列表
+    type: SINGLE
+    keys: "①②③④⑤⑥⑦⑧⑨⑩⒈⒉⒊⒋⒌⒍⒎⒏⒐⒑⒒⒓⒔⒕⒖⒗⒘⒙⒚⒛⑴⑵⑶⑷⑸⑹⑺⑻⑼⑽⑾⑿⒀⒁⒂⒃⒄⒅⒆⒇㈠㈡㈢㈣㈤㈥㈦㈧㈨㈩➊➋➌➍➎➏➐➑➒➓㊀㊁㊂㊃㊄㊅㊆㊇㊈㊉ⅰⅱⅲⅳⅴⅵⅶⅷⅸⅹⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ"
   pinyin:
     name: 拼音
     type: SINGLE
     keys: "āáǎàōóēéěèǒòīíǐìūúǖǘǚǜǔùêüńň"
+  script_symbols:
+    name: 𝒶𝒜
+    type: SINGLE
+    keys: "𝒶𝒷𝒸𝒹ℯ𝒻ℊ𝒽𝒾𝒿𝓀𝓁𝓂𝓃ℴ𝓅𝓆𝓇𝓈𝓉𝓊𝓋𝓌𝓍𝓎𝓏𝒜ℬ𝒞𝒟ℰℱ𝒢ℋℐ𝒥𝒦ℒℳ𝒩𝒪𝒫𝒬ℛ𝒮𝒯𝒰𝒱𝒲𝒳𝒴𝒵"
   grease:
     type: SINGLE
     name: 希腊
@@ -381,6 +397,72 @@ liquid_keyboard:
     type: SINGLE
     name: 英文
     keys: ",.?!:;/\\|*-+=^$`'\"^~@#%&()[]{}_"
+  rusa:
+    name: 俄语
+    type: SINGLE
+    keys: "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+  lation:
+    name: 拉丁
+    type: SINGLE
+    keys: "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞŠŸŒàáâãäåæçèéêëìíîïðñòóõôöøùúûüýþšÿœ"
+  korea:
+    type: SINGLE
+    name: "韩文"
+    keys: "dㅏㅑㅓㅕㅗㅛㅜㅠㅡㅣㅐㅒㅔㅖㅘㅙㅚㅝㅞㅟㅢㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎㄲㄸㅚㅆㅉ㉠㉡㉢㉣㉤㉥㉦㉧㉨㉩㉪㉫㉬㉭㉮㉯㉰㉱㉲㉳㉴㉵㉶㉷㉸㉹㉺㉻㈀㈁㈂㈃㈄㈅㈆㈇㈈㈉㈊㈋㈌㈍㈎㈏㈐㈑㈒㈓㈔㈕㈖㈗㈘㈙㈚㈛"
+  yinbiao:
+    type: SINGLE
+    name: "音标"
+    keys:
+      [
+        "a:",
+        "ɔ:",
+        "ɜː",
+        "i:",
+        "u:",
+        "ʌ",
+        "ɒ",
+        "ə",
+        "ɪ",
+        "ʊ",
+        "e",
+        "æ",
+        "eɪ",
+        "aɪ",
+        "ɔɪ",
+        "ɪə",
+        "eə",
+        "ʊə",
+        "əʊ",
+        "aʊ",
+        "p",
+        "t",
+        "k",
+        "f",
+        "θ",
+        "s",
+        "b",
+        "d",
+        "g",
+        "v",
+        "ð",
+        "z",
+        "ʃ",
+        "h",
+        "ts",
+        "tʃ",
+        "j",
+        "tr",
+        "ʒ",
+        "r",
+        "dz",
+        "dʒ",
+        "dr",
+        "w",
+        "m",
+        "n",
+        "ŋ",
+        "l",
+      ]
   yanwenzi:
     type: SINGLE
     name: "颜文字"
@@ -532,6 +614,7 @@ liquid_keyboard:
 # 工具栏
 tool_bar:
   button_spacing: 5 # 按钮间距
+  button_font: iconfont.ttf
 
   # 左侧固定主按钮配置
   primary_button:
@@ -568,6 +651,13 @@ tool_bar:
       style: "ic@clipboard"
     action: clipboard_window
 
+  move_button: &move_button
+    foreground:
+      style: "\uE1C1"
+      font_size: 19 # 设置符号大小
+      padding: 12
+    action: Keyboard_move
+
   ascii_mode_button: &ascii_mode_button
     foreground:
       option_styles: ["中", "En"] # 样式也可以为表，将根据 action 的 toggle 决定
@@ -591,7 +681,7 @@ tool_bar:
       *hide_button,
       *emoji_button,
       *clipboard_button,
-      *ascii_mode_button,
+      *move_button,
       *full_shape_button,
       *menu_button,
     ]
@@ -599,16 +689,17 @@ tool_bar:
 #键盘布局
 preset_keyboards:
   default:
-    author: "暖暖"
+    author: "prettycation"
     name: 26键默认布局
     width: 10
     height: 40
     label_transform: uppercase
     ascii_mode: 0
     keys:
+      # 第一行 Q-P
       - { click: q, long_click: 1, swipe_up: "1" }
       - { click: w, long_click: 2, swipe_up: "2" }
-      - { click: e, long_click: 3, swipe_up: "3" }
+      - { click: e, long_click: 3, swipe_up: translate }
       - { click: r, long_click: 4, swipe_up: "4" }
       - { click: t, long_click: 5, swipe_up: "5" }
       - { click: y, long_click: 6, swipe_up: "6" }
@@ -617,7 +708,8 @@ preset_keyboards:
       - { click: o, long_click: 9, swipe_up: "9" }
       - { click: p, long_click: 0, swipe_up: "0" }
 
-      - { width: 5 }
+      # 第二行 A-L
+      - { width: 5 } # 左侧缩进
       - { click: a, long_click: select_all, swipe_up: select_all }
       - { click: s, long_click: "`", swipe_up: "`" }
       - { click: d, long_click: "-", swipe_up: "-" }
@@ -627,8 +719,9 @@ preset_keyboards:
       - { click: j, long_click: ")", swipe_up: ")" }
       - { click: k, long_click: "'", swipe_up: "'" }
       - { click: l, long_click: '"', swipe_up: '"' }
-      - { width: 5 }
+      - { width: 5 } # 右侧缩进
 
+      # 第三行 Shift, Z-M, Del
       - {
           click: Shift_L,
           composing: delimiter,
@@ -636,13 +729,13 @@ preset_keyboards:
           key_back_color: bc1,
           key_text_color: tc1,
         }
-      - { click: z, long_click: "~", swipe_up: "~" }
+      - { click: z, long_click: undo, swipe_up: undo }
       - { click: x, long_click: cut, swipe_up: cut }
       - { click: c, long_click: copy, swipe_up: copy }
       - { click: v, long_click: paste, swipe_up: paste }
       - { click: b, long_click: ":", swipe_up: ":" }
-      - { click: n, long_click: ",", swipe_up: "," }
-      - { click: m, long_click: ".", swipe_up: "." }
+      - { click: n, long_click: "？", swipe_up: "？" }
+      - { click: m, long_click: "！", swipe_up: "！" }
       - {
           click: BackSpace,
           width: 15,
@@ -650,68 +743,158 @@ preset_keyboards:
           key_text_color: tc2,
         }
 
+      # 第四行 (仿讯飞布局)
+      # [符] [123] [，] [ 空格 ] [。] [中/En] [回车]
       - {
-          click: liquid_keyboard_switch,
+          click: liquid_keyboard_switch, # 对应“符”
           long_click: Color_switch,
-          swipe_up: Color_switch,
-          width: 12.5,
+          width: 12,
+          key_back_color: bc1,
+          key_text_color: tc1,
         }
       - {
-          click: Keyboard_number,
+          click: Keyboard_number, # 对应“123”
           long_click: Theme_settings,
           swipe_up: Theme_settings,
-          width: 12.5,
+          width: 12,
+          key_back_color: bc1,
+          key_text_color: tc1,
         }
-      - { click: space, width: 50, key_back_color: bc3, key_text_color: tc3 }
-      - { click: "/", long_click: "?", swipe_up: "?" }
+      - { click: ",", label: "，", width: 11 }
+      - { click: space, width: 30, key_back_color: bc3, key_text_color: tc3 }
+      - { click: ".", label: "。", width: 11 }
+      - {
+          click: Mode_switch, # 这里替换为了中英切换
+          width: 12,
+          key_back_color: bc1,
+          key_text_color: tc1,
+        }
       - {
           click: Return,
           composing: Return1,
           swipe_up: Escape,
-          width: 15,
+          width: 12,
           key_back_color: bc4,
           key_text_color: tc4,
         }
 
   number:
-    author: "暖暖"
-    name: 数字+
-    width: 20
-    height: 40
+    author: "prettycation"
+    name: 数字键盘
+    width: 20 # 5列布局，每列20%
+    height: 40 # 基准行高，4行总高160
     ascii_mode: 1
     keys:
-      - { click: "/", width: 13 }
-      - { click: "+", width: 13 }
-      - { click: 1 }
-      - { click: 2 }
-      - { click: 3 }
-      - { click: "=", width: 13 }
-
-      - { click: "*", width: 13 }
-      - { click: "-", width: 13 }
-      - { click: 4 }
-      - { click: 5 }
-      - { click: 6 }
-      - { click: ., width: 13 }
-
-      - { click: "%", width: 13 }
-      - { click: "×", width: 13 }
-      - { click: 7, long_click: select_all }
-      - { click: 8, long_click: copy }
-      - { click: 9, long_click: paste_clip, swipe_down: paste }
+      # Row 1: + 1  2  3  Del
+      - {
+          click: "+",
+          width: 18,
+          height: 40,
+          key_back_color: bc1,
+          key_text_color: tc1,
+        }
+      - { click: 1, width: 21.3 }
+      - { click: 2, width: 21.4 }
+      - { click: 3, width: 21.3 }
       - {
           click: BackSpace,
-          width: 13,
+          width: 18,
           key_back_color: bc2,
           key_text_color: tc2,
         }
 
-      - { click: liquid_keyboard_switch, long_click: Color_switch, width: 13 }
-      - { click: "÷", width: 13 }
-      - { click: Keyboard_default, key_back_color: bc1, key_text_color: tc1 }
-      - { click: 0, long_click: cut }
-      - { click: space1, key_back_color: bc3, key_text_color: tc3 }
-      - { click: Return, width: 13, key_back_color: bc4, key_text_color: tc4 }
+      # Row 2: -  4  5  6  Space
+      - {
+          click: "-",
+          width: 18,
+          height: 40,
+          key_back_color: bc1,
+          key_text_color: tc1,
+        }
+      - { click: 4, width: 21.3 }
+      - { click: 5, width: 21.4 }
+      - { click: 6, width: 21.3 }
+      - { click: space1, width: 18, key_back_color: bc1, key_text_color: tc1 }
+
+      # Row 3: /  7  8  9  Enter
+      - {
+          click: "/",
+          width: 18,
+          height: 40,
+          key_back_color: bc1,
+          key_text_color: tc1,
+        }
+      - { click: 7, width: 21.3 }
+      - { click: 8, width: 21.4 }
+      - { click: 9, width: 21.3 }
+      - { click: Return, width: 18, key_back_color: bc4, key_text_color: tc4 }
+
+      # Row 4: 符号键  @  0  .  返回
+      - {
+          click: liquid_keyboard_switch,
+          label: "符",
+          width: 18,
+          height: 40,
+          key_back_color: bc1,
+          key_text_color: tc1,
+        }
+      - { click: "@", width: 21.3, key_back_color: bc1, key_text_color: tc1 }
+      - { click: 0, width: 21.3 }
+      - { click: ".", width: 21.4, key_back_color: bc1, key_text_color: tc1 }
+      - {
+          click: Keyboard_default,
+          label: "返回",
+          width: 18,
+          key_back_color: bc1,
+          key_text_color: tc1,
+        }
+
+  move:
+    author: "prettycation"
+    name: 编辑/移动
+    width: 20 # 5列布局，每列宽度20%
+    height: 53 # 3行布局，适当增加行高
+    keys:
+      # 第一行
+      - {
+          click: key_tab,
+          label: "TAB",
+          key_back_color: bc2,
+          key_text_color: tc2,
+        }
+      - { click: copy, label: "复制" }
+      - { click: Up, label: "↑" }
+      - { click: paste, label: "粘贴" }
+      - {
+          click: BackSpace,
+          label: "⌫",
+          key_back_color: bc2,
+          key_text_color: tc2,
+        }
+
+      # 第二行
+      - { click: Home, label: "开头", key_back_color: bc2, key_text_color: tc2 }
+      - { click: Left, label: "←" }
+      - { click: Shift_L2, label: "选择" }
+      - { click: Right, label: "→" }
+      - {
+          click: Delete,
+          label: "DEL",
+          key_back_color: bc2,
+          key_text_color: tc2,
+        }
+
+      # 第三行
+      - { click: End, label: "末尾", key_back_color: bc2, key_text_color: tc2 }
+      - { click: select_all, label: "全选" }
+      - { click: Down, label: "↓" }
+      - { click: cut, label: "剪切" }
+      - {
+          click: Keyboard_default,
+          label: "返回",
+          key_back_color: bc1,
+          key_text_color: tc1,
+        }
 
 preset_keys:
   # 安卓
@@ -732,9 +915,8 @@ preset_keys:
   VOLUME_MUTE: { label: 静音, send: VOLUME_MUTE }
   # 编辑
   Shift_L: { label: "▲", functional: false, send: Shift_L }
-  Return:
-    { label: enter_labels, preview: "↩", functional: false, send: Return }
-  Return1: { label: "処刑", preview: "↩", functional: false, send: Return }
+  Return: { label: enter_labels, preview: "↩", functional: false, send: Return }
+  Return1: { label: "处刑", preview: "↩", functional: false, send: Return }
   Hide: { label: 隐藏, send: BACK }
   BackSpace:
     { label: "⌫", repeatable: true, functional: false, send: BackSpace }
@@ -743,15 +925,16 @@ preset_keys:
       repeatable: true,
       preview: "⎵",
       functional: false,
-      label: "SPACE",
+      label: "ナノカ",
       send: space,
     }
+  key_tab: { label: "TAB", text: "\t" }
   space1: { repeatable: true, label: "⎵", functional: false, send: space }
   Clear: { label: 全清, send: Clear }
   Escape: { label: 取消, functional: false, send: Escape }
   Home: { label: 行首, send: Home, functional: false }
   Insert: { label: 插入, send: Insert }
-  Delete: { label: 删除, send: Delete, functional: false }
+  Delete: { label: DEL, send: Delete, functional: false }
   End: { label: 行尾, send: End, functional: false }
   Page_Up: { label: 上页, send: Page_Up, functional: false }
   Page_Down: { label: 下页, send: Page_Down, functional: false }
@@ -759,6 +942,7 @@ preset_keys:
   Down: { label: "↓", send: Down, functional: false }
   Up: { label: "↑", send: Up, functional: false }
   Right: { label: "→", send: Right, repeatable: true, functional: false }
+  translate: { label: 翻译, functional: false, send: Control+e }
   select_all: { label: 全选, functional: false, send: Control+a }
   cut: { label: 剪切, functional: false, send: Control+x }
   copy: { label: 复制, functional: false, send: Control+c }
@@ -767,7 +951,7 @@ preset_keys:
   paste_text: { label: 貼上文本, send: Control+Shift+Alt+v } #>=Android 6.0
   share_text: { label: 分享文本, send: Control+Alt+s } #>=Android 6.0
   redo: { label: 重做, functional: false, send: Control+Shift+z } #>=Android 6.0
-  undo: { label: 撤銷, functional: false, send: Control+z } #>=Android 6.0
+  undo: { label: 撤销, functional: false, send: Control+z } #>=Android 6.0
   delimiter: { label: 分词, text: "'" }
   x1: { text: "{Home}{Right}{Right}", label: 单字, functional: false }
   x2:
@@ -807,12 +991,13 @@ preset_keys:
     { label: 123, functional: false, send: Eisu_toggle, select: number }
   Keyboard_symbols:
     { label: 更多, functional: false, send: Eisu_toggle, select: symbols }
-  Keyboard_move: { label: ❖, functional: true, send: Eisu_toggle, select: move }
+  Keyboard_move:
+    { label: "\uE1C1", functional: true, send: Eisu_toggle, select: move }
   Keyboard_next:
     { label: 后退, functional: false, send: Eisu_toggle, select: .next }
   Keyboard_last:
     { label: 后退, functional: false, send: Eisu_toggle, select: .last }
-  Keyboard_last_lock: { label: 返回, send: Eisu_toggle, select: .last_lock } #直接切換到下一键盘
+  Keyboard_last_lock: { label: 返回, send: Eisu_toggle, select: .last_lock } #直接切换到下一键盘
   liquid_keyboard_exit: {
       label: 返回,
       send: function,
@@ -837,7 +1022,7 @@ preset_keys:
       toggle: ascii_mode,
       functional: false,
       send: Mode_switch,
-      states: [中文, 西文],
+      states: [中, En],
     }
   Zenkaku_Hankaku:
     { toggle: full_shape, send: Mode_switch, states: [半角, 全角] }
@@ -846,13 +1031,13 @@ preset_keys:
     { toggle: extended_charset, send: Mode_switch, states: [常用, 增广] }
   Punct_switch: { toggle: ascii_punct, send: Mode_switch, states: [。，, ．，] }
   # trime设置
-  IME_switch: { label: 🌐, send: LANGUAGE_SWITCH } #彈出對話框選擇輸入法
-  IME_last: { label: 上一输入法, send: LANGUAGE_SWITCH, select: .last } #直接切換到上一輸入法
-  IME_next: { label: 下一输入法, send: LANGUAGE_SWITCH, select: .next } #直接切換到下一輸入法
+  IME_switch: { label: 🌐, send: LANGUAGE_SWITCH } #弹出对话框选择输入法
+  IME_last: { label: 上一输入法, send: LANGUAGE_SWITCH, select: .last } #直接切换到上一输入法
+  IME_next: { label: 下一输入法, send: LANGUAGE_SWITCH, select: .next } #直接切换到下一输入法
   Schema_switch: { label: 下一方案, functional: false, send: Control+Shift+1 }
   Schema_Eng: { label: En, functional: true, send: Control+Shift+0 }
   Theme_settings: { label: 主题, send: SETTINGS, option: "theme" }
-  Color_switch: { label: 换人, functional: false, send: PROG_RED }
+  Color_switch: { label: 指认, functional: false, send: PROG_RED }
   Help: { label: 说明, send: Help }
   Info: { label: 关于, send: INFO }
   Menu: { label: 方案, functional: false, send: Menu }
@@ -865,57 +1050,57 @@ preset_keys:
       send: function,
       command: run,
       option: "com.osfans.trime",
-    } #運行程序: run 包名
+    } #运行程序: run 包名
   TrimeCmp: {
       label: 同文組件,
       send: function,
       command: run,
       option: "com.osfans.trime/.Pref",
-    } #運行程序指定組件: run 包名/組件名
+    } #运行程序指定組件: run 包名/組件名
   Homepage: {
       label: 同文主頁,
       send: function,
       command: run,
       option: "https://github.com/osfans/trime",
-    } #查看網頁: run 網址
+    } #查看网页: run 网址
   Wiki: {
       label: 維基,
       send: function,
       command: run,
       option: "https://zh.wikipedia.org/wiki/%s",
-    } #搜索網頁: %s或者%1$s爲當前字符
+    } #搜索网页: %s或者%1$s为当前字符
   Google: {
       label: 谷歌,
       send: function,
       command: run,
       option: "https://www.google.com/search?q=%s",
-    } #搜索網頁: %s或者%1$s爲當前字符
+    } #搜索网页: %s或者%1$s为当前字符
   MoeDict: {
       label: 萌典,
       send: function,
       command: run,
       option: "https://www.moedict.tw/%3$s",
-    } #搜索網頁: %3$s爲光標前字符
+    } #搜索网页: %3$s为光标前字符
   Baidu: {
       label: 百度搜索,
       send: function,
       command: run,
       option: "https://www.baidu.com/s?wd=%4$s",
-    } #搜索網頁: %4s爲光標前所有字符
+    } #搜索网页: %4s为光标前所有字符
   Zdic: {
       label: 漢典,
       send: function,
       command: run,
       option: "http://www.zdic.net/sousuo/?q=%1$s",
-    } #搜索網頁: %s或者%1$s爲當前字符
+    } #搜索网页: %s或者%1$s为当前字符
   Zdic2: {
       label: 漢典,
       send: function,
       command: run,
       option: "http://www.zdic.net/sousuo/?q=%2$s",
-    } #搜索網頁: %2$s爲當前輸入的編碼
+    } #搜索网页: %2$s为当前输入的编码
   WebSearch: {
-      label: 搜索網頁,
+      label: 搜索网页,
       send: function,
       command: web_search,
       option: "%4$s",
